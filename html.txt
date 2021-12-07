@@ -1,0 +1,54 @@
+<template> 
+
+    <div><strong>Search By {searchType}</strong></div> 
+
+    <br> 
+
+    <lightning-button label="Id" title="Id" onclick={byId} class="slds-m-left_x-small"></lightning-button> 
+
+    <lightning-button label="Name" title="Name" onclick={byName} class="slds-m-left_x-small"></lightning-button> 
+
+    <lightning-button label="Author" title="Author" onclick={byAuthor} class="slds-m-left_x-small"></lightning-button> 
+
+    <lightning-button label="Category" title="Category" onclick={byCategory} class="slds-m-left_x-small"></lightning-button> 
+
+<br> 
+ 
+<br> 
+
+<lightning-card> 
+
+    <div class="slds-m-horizontal_medium"> 
+
+      <lightning-input label="Search Books by" type="search" onchange={getSearchValue} placeholder={searchKey}>{searchType} </lightning-input> 
+      <lightning-button label="search" title="search" onclick={handleSearchKeyChange} class="slds-m-left_x-small"></lightning-button>
+    </div> 
+
+  </lightning-card> 
+
+ 
+ 
+
+  <br> 
+
+<br> 
+
+        <div class="slds-scrollable" style="height:500px;"> 
+
+          <lightning-datatable 
+
+          key-field="Id" 
+
+          data={visibleContacts} 
+
+          columns={columns} onrowaction={handleRowAction}> 
+          
+
+  </lightning-datatable> 
+      <c-pagination records={totalContacts} onupdate={updateContactHandler}></c-pagination>
+    
+
+
+      </div> 
+
+</template> 

@@ -1,0 +1,24 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 12-07-2021
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
+public with sharing class AccountController {
+@AuraEnabled(cacheable=true)
+    public static List<Book__c> getBookListByname(String param,String type){
+    String key = '%' + type + '%';
+    String selectedID = string.escapeSingleQuotes(type);
+    if (param=='Name') return [select Id, Name, Book_Status__c,  Return_Date__c from Book__c where Name like :key];
+
+    else if (param=='Id') 
+    return [select Id, Name, Book_Status__c,  Return_Date__c from Book__c where Id =:selectedID];
+
+    
+    else if (param=='Author') return [select Id, Name, Book_Status__c,  Return_Date__c from Book__c where Author__c like :key];
+
+    else if (param=='Category') return [select Id, Name, Book_Status__c,  Return_Date__c from Book__c where Category__c like :key];
+    else return [select Id, Name, Book_Status__c,  Return_Date__c from Book__c where Name like :''];
+    }
+}
