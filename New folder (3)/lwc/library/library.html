@@ -1,0 +1,88 @@
+<template> 
+    <lightning-card>
+    <div style="margin-left: 8px;"><strong> Search By </strong></div> 
+
+    <br> 
+    <lightning-button label="User" title="User" onclick={byOwner} class="slds-m-left_x-small"></lightning-button> 
+
+    <lightning-button label="Id" title="Id" onclick={byId} class="slds-m-left_x-small"></lightning-button> 
+
+    <lightning-button label="Name" title="Name" onclick={byName} class="slds-m-left_x-small"></lightning-button> 
+
+    <lightning-button label="Author" title="Author" onclick={byAuthor} class="slds-m-left_x-small"></lightning-button> 
+    
+    <lightning-button label="Book Status" title="Book Status" onclick={byBookStatus}  class="slds-m-left_x-small"></lightning-button> 
+
+</lightning-card><lightning-card><lightning-button label="Add new book" title="Book Status" onclick={flag3} style="margin-left: 80px; color:#483D8B;" class="slds-m-right_x-small"></lightning-button> 
+</lightning-card>
+    <template  if:true={flag4}>
+        <lightning-card>
+        <lightning-layout>
+            <lightning-input type="text" name="tag_name_0" label="Author" style="margin-left: 8px;"
+                                            onchange={handleFormInputChange}
+                                            class="formInput"></lightning-input>
+                                            <br>
+    <lightning-input type="text" name="tag_name_1" label="Book Name" style="margin-left: 16px;"
+                                            onchange={handleFormInputChange}
+                                            class="formInput"></lightning-input>
+                                            <br>
+    <lightning-input type="text" name="tag_name_2" label="Category" style="margin-left: 16px;"
+                                            onchange={handleFormInputChange}
+                                            class="formInput"></lightning-input>
+    
+    <br>
+    <lightning-button label="add to library" title="add" style="float: right; margin-top:23px" onclick={add} class="slds-m-left_x-small"></lightning-button> 
+          </lightning-layout>
+
+        </lightning-card>
+        </template>
+
+
+
+<br> 
+ 
+<br> 
+
+<template if:true={flag5}>
+<lightning-card> 
+
+    <div class="slds-m-horizontal_medium"> 
+      Search Book by <b>{searchType}</b>
+      <lightning-input  type="search" onchange={getSearchValue} placeholder={searchKey}> </lightning-input> 
+      <lightning-button label="search" style="margin-top:5px" title="search" onclick={handleSearchKeyChange} class="slds-m-left_x-small"></lightning-button>
+    </div> 
+
+  </lightning-card> 
+
+ 
+ 
+
+  <br> 
+
+<br> 
+
+        <div class="slds-scrollable" style="height:500px;"> 
+
+          <lightning-datatable 
+
+          key-field="Id" 
+
+          data={visibleContacts} 
+
+          columns={columns} onrowaction={handleRowAction}> 
+          
+
+  </lightning-datatable> 
+      <c-pagination records={totalContacts} onupdate={updateContactHandler}></c-pagination>
+    
+
+
+      </div> 
+
+
+
+    </template>
+
+
+
+</template> 

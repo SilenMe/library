@@ -1,0 +1,51 @@
+<template>
+  <b>Search By : {searchType} </b><br>
+  
+  <div class="slds-m-top_medium ">
+      <!-- Button group: simple buttons --> 
+      
+      <lightning-button-group>
+          <lightning-button label="ID"  onclick={byid} ></lightning-button>
+          <lightning-button label="Name"  onclick={byName} ></lightning-button>
+          <lightning-button label="Author" onclick={byAuthor} ></lightning-button>
+          <lightning-button label="Category" onclick={byCategory}></lightning-button>
+      </lightning-button-group>
+  </div>
+  
+  <lightning-input type="search" label="Search Book" onchange={getSearchValue} placeholder={searchKey} >{searchType}</lightning-input>
+  <br>
+  &emsp;
+  <lightning-button  class= "button" variant="success" label="Search" onclick={handleSearchKeyChange} ></lightning-button>
+
+   
+ 
+
+
+  <template if:true={visibleContacts}>
+      <lightning-datatable 
+      key-field="Name" 
+      data={visibleContacts} 
+      columns={columns}
+      onrowselection ={handleRowSelection} > 
+      
+    </lightning-datatable>
+  </template>
+
+    <div style="padding-top: 10;">  
+
+      <lightning-button variant="brand" label="Issue" 
+       onclick={getSelectedRec} class="slds-m-left_x-small"></lightning-button>
+  
+  
+      </div>
+
+      <c-pagination records={totalContacts} onupdate={updateContactHandler}></c-pagination>
+ 
+
+
+  
+
+
+
+
+</template>

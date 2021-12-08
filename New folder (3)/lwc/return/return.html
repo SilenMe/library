@@ -1,0 +1,21 @@
+<template>
+   
+    
+    <template if:true={BookList}>
+        <lightning-datatable
+                key-field="Name"
+                data={BookList}
+                columns={columns}>
+        </lightning-datatable>
+   </template>
+
+
+    <div style="padding-top: 10;">  
+
+        <lightning-button variant="brand" label="Return" 
+         onclick={getSelectedRec} class="slds-m-left_x-small"></lightning-button>
+
+    </div>
+<lightning-card>Your overdue price is  {price}</lightning-card>
+
+</template>
